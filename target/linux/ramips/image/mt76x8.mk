@@ -196,6 +196,17 @@ define Device/elecom_wrc-1167fs
 endef
 TARGET_DEVICES += elecom_wrc-1167fs
 
+define Device/gardena_smart_gateway_mt7688
+  IMAGE_SIZE := 15872k
+  DEVICE_VENDOR := GARDENA
+  DEVICE_MODEL := smart Gateway
+  DEVICE_PACKAGES:= uboot-envtools
+  IMAGES += factory.bin
+  IMAGE/factory.bin := append-rootfs | pad-rootfs
+  KERNEL := kernel-bin | lzma | fit lzma $$(KDIR)/image-$$(firstword $$(DEVICE_DTS)).dtb
+endef
+TARGET_DEVICES += gardena_smart_gateway_mt7688
+
 define Device/glinet_gl-mt300n-v2
   IMAGE_SIZE := 16064k
   DEVICE_VENDOR := GL.iNet
@@ -1064,7 +1075,7 @@ TARGET_DEVICES += xiaomi_miwifi-nano
 define Device/xiaomi_mi-ra75
   IMAGE_SIZE := 14976k
   DEVICE_VENDOR := Xiaomi
-  DEVICE_MODEL := MiWiFi Range Extender AC1200 
+  DEVICE_MODEL := MiWiFi Range Extender AC1200
   DEVICE_VARIANT := RA75
   DEVICE_PACKAGES := kmod-mt76x2
   SUPPORTED_DEVICES += xiaomi,mira75
