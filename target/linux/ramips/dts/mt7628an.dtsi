@@ -365,6 +365,13 @@
 				function = "refclk";
 			};
 		};
+
+		gpio_pins: gpio {
+			gpio {
+				groups = "gpio";
+				function = "gpio";
+			};
+		};
 	};
 
 	usbphy: usbphy@10120000 {

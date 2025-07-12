@@ -20,13 +20,11 @@
 		reg = <0x0 0x8000000>;
 	};
 
-#if 0
-	// FIXME:
 	gpio-keys {
 		compatible = "gpio-keys";
 
 		pinctrl-names = "default";
-		pinctrl-0 = <&pinmux_gpio_gpio>;	/* GPIO11 */
+		pinctrl-0 = <&gpio_pins>;
 
 		button {
 			label = "USER_BTN1";
@@ -39,10 +37,8 @@
 		compatible = "gpio-leds";
 
 		pinctrl-names = "default";
-		pinctrl-0 = <&pinmux_pwm0_gpio>,	/* GPIO18 */
-			    <&pinmux_pwm1_gpio>,	/* GPIO19 */
-			    <&pinmux_sdmode_gpio>,	/* GPIO22..29 */
-			    <&pinmux_p0led_an_gpio>;	/* GPIO43 */
+		pinctrl-0 = <&gpio_pins>;
+
 		/*
 		 * <&pinmux_i2s_gpio> (covers GPIO0..3) is needed here as
 		 * well for GPIO3. But this is already claimed for uart1
@@ -115,7 +111,6 @@
 			linux,default-trigger = "netdev";
 		};
 	};
-#endif
 
 	aliases {
 		ethernet0 = &ethernet;
